@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+    <div class="card shadow-lg p-4 text-center" style="max-width: 500px; border-radius: 20px;">
+        <h1 class="mb-3 text-primary">Добро пожаловать!</h1>
+        <p class="lead text-muted">Система бронирования столиков.</p>
+        <p>Вы можете управлять клиентами, столиками и бронированиями.</p>
+        <a href="{% url 'customer-list' %}" class="btn btn-primary btn-lg mt-3">Начать</a>
+    </div>
+</div>
+{% endblock %}
