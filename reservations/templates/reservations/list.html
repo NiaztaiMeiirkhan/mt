@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Бронирования{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-3">Список бронирований</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Клиент</th>
+                <th>Столик</th>
+                <th>Дата</th>
+                <th>Статус</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for reservation in reservations %}
+            <tr>
+                <td>{{ forloop.counter }}</td>
+                <td>{{ reservation.customer.name }}</td>
+                <td>Столик №{{ reservation.table.number }}</td>
+                <td>{{ reservation.date }}</td>
+                <td>
+                    <span class="badge {% if reservation.status == 'confirmed' %}bg-success{% elif reservation.status == 'pending' %}bg-warning{% else %}bg-danger{% endif %}">
+                        {{ reservation.get_status_display }}
+                    </span>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5" class="text-center text-muted">Бронирований нет</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
